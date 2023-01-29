@@ -29,6 +29,6 @@ jobs:
       working-directory: pokeapi
     - name: Run Tests
       run: |
-        poetry run shell
+        poetry shell
         python manage.py test
       working-directory: pokeapi
