@@ -26,9 +26,11 @@ env = environ.Env()
 SECRET_KEY = "django-insecure-v9uek(p-elyy**6mjwq+lz_rtl)zv0^d%kk-4$(3v^6)chibq@"
 
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
+
 if READ_DOT_ENV_FILE:
     # OS environment variables take precedence over variables from .env
-    env.read_env(str(BASE_DIR / ".env"))
+    ENV_DIR = Path(__file__).resolve().parent.parent.parent
+    env.read_env(str(ENV_DIR / ".env"))
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -94,12 +96,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+DATABASES = {"default": env.db("DJANGO_DATABASE_URL")}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
