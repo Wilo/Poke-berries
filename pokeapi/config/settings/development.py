@@ -25,4 +25,10 @@ DEBUG_TOOLBAR_CONFIG = {
     "DISABLE_PANELS": ["debug_toolbar.panels.redirects.RedirectsPanel"],
     "SHOW_TEMPLATE_CONTEXT": True,
 }
+# django-extensions
+# ------------------------------------------------------------------------------
+# https://django-extensions.readthedocs.io/en/latest/installation_instructions.html#configuration
+INSTALLED_APPS += ["django_extensions", "werkzeug"]  # noqa F405
+SHELL_PLUS = "ipython"  # Always use IPython for shell_plus
+SHELL_PLUS_PRINT_SQL = True
 # ------------------------------------------------------------------------------
