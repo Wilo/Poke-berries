@@ -425,3 +425,7 @@ sketch
 # Ignore all local history of files
 .history
 .ionide
+
+staticfiles
+.md
+.html

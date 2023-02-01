@@ -1,0 +1,16 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=pokeapi
+      - POSTGRES_USER=pokeapi-user
+      - POSTGRES_PASSWORD=pokeapi-password
+    ports:
+      - "5432:5432"
+    networks:
+      - bridgenetwork
+
+networks:
+  bridgenetwork:
+    driver: bridge
