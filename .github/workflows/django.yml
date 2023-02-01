@@ -13,7 +13,20 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.7, 3.8, 3.9, '3.10']
+        python-version: ['3.10'] # [3.7, 3.8, 3.9, '3.10']
+    services:
+      postgres:
+        image: postgres:15
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: secret_key
+          POSTGRES_DB: pokeapi
+    env:
+      DJANGO_SETTINGS_MODULE: "config.settings.test"
+      # postgres://user:password@host:port/database
+      DATABASE_URL: "postgres://postgres:secret_key@localhost:5432/pokeapi"
+      POKEAPI_API_URL: ${{ secrets.POKEAPI_API_URL }}
 
     steps:
     - uses: actions/checkout@v3
@@ -26,6 +39,8 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install poetry
         python -m poetry install --without dev,prod
+        python -m poetry run python manage.py migrate
+        python -m poetry run python manage.py sync
       working-directory: pokeapi
     - name: Run Tests
       run: |
