@@ -1,0 +1,63 @@
+{
+	"info": {
+		"_postman_id": "ed46f91d-3b4b-4084-8f13-6773f26c22c8",
+		"name": "PokeAPI Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20590763"
+	},
+	"item": [
+		{
+			"name": "Berries",
+			"item": [
+				{
+					"name": "PokeBerries",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query PokeAPIChallenge {\n            berries: pokemon_v2_berry {\n                id\n                name\n                growth_time\n            }\n        }",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://beta.pokeapi.co/graphql/v1beta",
+							"protocol": "https",
+							"host": [
+								"beta",
+								"pokeapi",
+								"co"
+							],
+							"path": [
+								"graphql",
+								"v1beta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Berries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/allBerryStats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"allBerryStats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
