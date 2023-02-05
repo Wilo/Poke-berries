@@ -13,3 +13,5 @@ env
 .git
 LICENSE
 README.md
+Dockerfile
+Makefile
